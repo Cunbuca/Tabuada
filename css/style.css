@@ -22,8 +22,9 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: rgb(164, 211, 243);
+    background: red;
 }
+//rgb(164, 211, 243)
 ul{
     list-style: none;
     display: flex;
