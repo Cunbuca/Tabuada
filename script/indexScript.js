@@ -1,33 +1,78 @@
 let respArea = document.getElementById("resp");
 let per1Area = document.getElementById("per1");
 let per2Area = document.getElementById("per2");
-let op = document.getElementById("op");
+let tempoArea = document.getElementById("tempo");
+let contQtdArea = document.getElementById("contQtd");
+let opArea = document.getElementById("op");
+let op;
+let numOp;
+let perQtd = 0;
+let num1;
+let num2;
+let respCorrect = 0;
+let perMax = 5;
 
+let tempo = 0;
 let resp = "";
 
 function numAle(min ,max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let numOp = numAle(1,4);
+function iniciaTimer(){
+    intervalo = setInterval(() => {
+        tempo++;
+        tempoArea.innerHTML = `${tempo}s`;
+        contQtdArea.innerHTML=`${perQtd}/${perMax}`;
+    },1000);
+}
 
-let num1 = numAle(1,10);
-let num2 = numAle(1,10);
+function setPergunta(){
+    let numOp = numAle(1,4);
+    if(numOp == 1){
+        op = "x";
+        opArea.innerHTML=op;
+    }else if(numOp == 2){
+        op = "+";
+        opArea.innerHTML=op;
+    }else if(numOp == 3){
+        op = "&divide;";
+        opArea.innerHTML=op;
+    }else if(numOp == 4){
+        op = "-";
+        opArea.innerHTML=op;
+    }
 
-if(numOp == 1){
-    op.innerHTML="+";
-}else if(numOp == 2){
-    op.innerHTML="-";
-}else if(numOp == 3){
-    op.innerHTML="/";
-}else if(numOp == 4){
-    op.innerHTML="x";
+    num1 = numAle(1,10);
+    num2 = numAle(1,10);
+    per1Area.innerHTML=num1;
+    per2Area.innerHTML=num2;
+    iniciaTimer();
+}
+function newPergunta(){
+    numOp = numAle(1,4);
+    if(numOp == 1){
+        op = "x";
+        opArea.innerHTML=op;
+    }else if(numOp == 2){
+        op = "+";
+        opArea.innerHTML=op;
+    }else if(numOp == 3){
+        op = "&divide;";
+        opArea.innerHTML=op;
+    }else if(numOp == 4){
+        op = "-";
+        opArea.innerHTML=op;
+    }
+
+    num1 = numAle(1,10);
+    num2 = numAle(1,10);
+    per1Area.innerHTML=num1;
+    per2Area.innerHTML=num2;
+    presBackSpace();
 }
 
 respArea.innerHTML=resp;
-
-per1Area.innerHTML=num1;
-per2Area.innerHTML=num2;
 
 function presBackSpace(){
     resp="";
@@ -35,6 +80,27 @@ function presBackSpace(){
 }
 
 function presOk(){
+    if(numOp == 1){
+        if(resp == num1 * num2){
+            respCorrect++;
+        }
+    }else if(numOp == 2){
+        if(resp == num1 + num2){
+            respCorrect++;
+        }
+    }else if(numOp == 3){
+        if(resp == num1 / num2){
+            respCorrect++;
+        }
+    }else if(numOp == 4){
+        if(resp == num1 - num2){
+            respCorrect++;
+        }
+    }
+    if(perQtd < perMax){
+        perQtd++;
+        newPergunta();
+    }
 }
 
 function pres1(){
@@ -97,3 +163,4 @@ function pres0(){
         respArea.innerHTML=resp;
     }
 }
+setPergunta()
