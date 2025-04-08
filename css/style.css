@@ -1,0 +1,57 @@
+.lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.main{
+    font-family: 'lato';
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: rgb(164, 211, 243);
+}
+ul{
+    list-style: none;
+    display: flex;
+}
+.info{
+    display: flex;
+    font-size: 40px;
+    justify-content: space-between;
+    width: 100%;
+}
+.timer, .qtd{
+    margin: 15px 15px 0px 15px;
+}
+.cont{
+    margin-top: 15%;
+    font-size: 70px;
+    margin-bottom: 10%;
+}
+.resp{
+    margin-bottom: 55px;
+    font-size: 60px;
+    min-height: 67px;
+    border-bottom: 5px solid black;
+}
+button{
+    font-size: 50px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 75px;
+    width: 100px;
+}

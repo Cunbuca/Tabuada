@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Tabuada</title>
+</head>
+<body>
+    <div class="main">
+        <div class="info">
+            <div class="timer">
+                <p>tempo:</p>
+                <p>5:25</p>
+            </div>
+            <div class="qtd">
+                <p>contas:</p>
+                <p>30/60</p>
+            </div>
+        </div>
+        <br>
+        <div class="cont">
+            <span class="num1" id="per1">40</span>
+            <span class="operator" id="op">&divide;</span>
+            <span class="num2" id="per2">2</span>
+            <span class="wenhao">= ?</span>
+        </div>
+        <br>
+        <div class="resp">
+            <span class="Presp" id="resp">20</span>
+        </div>
+        <br>
+        <div class="teclado">
+            <ul class="tec-1">
+                <li><button onclick="pres1()">1</button></li>
+                <li><button onclick="pres2()">2</button></li>
+                <li><button onclick="pres3()">3</button></li>
+            </ul>
+            <ul class="tec-2">
+                <li><button onclick="pres4()">4</button></li>
+                <li><button onclick="pres5()">5</button></li>
+                <li><button onclick="pres6()">6</button></li>
+            </ul>
+            <ul class="tec-3">
+                <li><button onclick="pres7()">7</button></li>
+                <li><button onclick="pres8()">8</button></li>
+                <li><button onclick="pres9()">9</button></li>
+            </ul>
+            <ul class="tec-4">
+                <li><button onclick="presBackSpace()">⌫</button></li>
+                <li><button onclick="pres0()">0</button></li>
+                <li><button onclick="presOk()">Ok</button></li>
+            </ul>
+        </div>
+    </div>
+    <script src="/script/indexScript.js"></script>
+</body>
+</html>
