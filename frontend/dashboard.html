@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Tabuada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Lato', sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      flex: 1;
+    }
+
+    .sidebar {
+      background-color: #2c3e50;
+      color: white;
+      width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      background-color: #34495e;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .user-info h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .user-info p {
+      font-size: 14px;
+      color: #bdc3c7;
+    }
+
+    .menu {
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    .menu a {
+      display: block;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #34495e;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #2c3e50;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+    }
+
+    .dashboard {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-header h1 {
+      font-size: 28px;
+    }
+
+    .start-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .start-btn:hover {
+      background-color: #2980b9;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .stat-box p {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .chart-placeholder {
+      background-color: white;
+      border-radius: 12px;
+      flex: 1 1 300px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 70%;
+        max-width: 300px;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100%;
+        background-color: #2c3e50;
+        transition: left 0.3s ease;
+      }
+
+      .sidebar.show {
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">☰</button>
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="user-info">
+        <div class="avatar"></div>
+        <h2>João</h2>
+        <p>joao@email.com</p>
+      </div>
+      <nav class="menu">
+        <a href="#">🏠 Início</a>
+        <a href="#">📄 Histórico</a>
+        <a href="#">⚙️ Configurações</a>
+        <a href="#">📊 Estatísticas</a>
+      </nav>
+    </aside>
+
+    <main class="dashboard">
+      <header class="dashboard-header">
+        <h1>Seu Desempenho</h1>
+        <button class="start-btn">Começar Desafio</button>
+      </header>
+
+      <section class="stats">
+        <div class="stat-box">
+          <h3>Contas Realizadas</h3>
+          <p>120</p>
+        </div>
+        <div class="stat-box">
+          <h3>Média de Acertos</h3>
+          <p>87%</p>
+        </div>
+        <div class="stat-box">
+          <h3>Tempo Total</h3>
+          <p>1h 42min</p>
+        </div>
+        <div class="stat-box">
+          <h3>Melhor Sequência</h3>
+          <p>17 acertos</p>
+        </div>
+      </section>
+
+      <section class="charts">
+        <div class="chart-placeholder">[ Gráfico de Progresso ]</div>
+        <div class="chart-placeholder">[ Gráfico de Desempenho por Operação ]</div>
+      </section>
+    </main>
+  </div>
+  <div id="info"></div>
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      const toggleBtn = document.getElementById("menuToggle");
+      sidebar.classList.toggle("show");
+      toggleBtn.classList.toggle("open");
+      toggleBtn.textContent = sidebar.classList.contains("show") ? '✖' : '☰';
+    }
+  </script>
+  <script src="/frontend/script/scriptlogin.js"></script>
+</body>
+</html>
